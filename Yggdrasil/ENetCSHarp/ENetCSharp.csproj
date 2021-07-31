@@ -1,19 +1,32 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
-    <PropertyGroup>
-        <TargetFramework>netstandard2.0</TargetFramework>
-    </PropertyGroup>
+  <PropertyGroup>
+      <TargetFramework>netstandard2.0</TargetFramework>
+      <IsWindows Condition="'$([System.Runtime.InteropServices.RuntimeInformation]::IsOSPlatform($([System.Runtime.InteropServices.OSPlatform]::Windows)))' == 'true'">true</IsWindows>
+      <IsOSX Condition="'$([System.Runtime.InteropServices.RuntimeInformation]::IsOSPlatform($([System.Runtime.InteropServices.OSPlatform]::OSX)))' == 'true'">true</IsOSX>
+      <IsLinux Condition="'$([System.Runtime.InteropServices.RuntimeInformation]::IsOSPlatform($([System.Runtime.InteropServices.OSPlatform]::Linux)))' == 'true'">true</IsLinux>
+  </PropertyGroup>
 
-    <ItemGroup>
-      <None Update="Native\Win64\Release\enet.dll">
-        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-      </None>
-      <None Update="Native\MacOS\Release\libenet.bundle">
-        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-      </None>
-      <None Update="Native\Linux64\Release\libenet.so">
-        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-      </None>
-    </ItemGroup>
+  <PropertyGroup Condition="'$(IsWindows)'=='true'">
+    <DefineConstants>Windows</DefineConstants>
+  </PropertyGroup>
 
+  <PropertyGroup Condition="'$(IsOSX)'=='true'">
+    <DefineConstants>OSX</DefineConstants>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(IsLinux)'=='true'">
+    <DefineConstants>Linux</DefineConstants>
+  </PropertyGroup>
+
+  <Target Name="CopyENetLibs" AfterTargets="AfterBuild">
+    <Copy SourceFiles="Native/Win64/Release/enet.dll" DestinationFolder="$(OutDir)" Condition=" '$(Configuration)' == 'Release' and '$(IsWindows)'=='true'"/>
+    <Copy SourceFiles="Native/Win64/Debug/enet.dll" DestinationFolder="$(OutDir)" Condition=" '$(Configuration)' == 'Debug' and '$(IsWindows)'=='true'"/>
+
+    <Copy SourceFiles="Native/Linux64/Release/libenet.so" DestinationFolder="$(OutDir)" Condition=" '$(Configuration)' == 'Release' and '$(IsLinux)'=='true'"/>
+    <Copy SourceFiles="Native/Linux64/Debug/libenet.so" DestinationFolder="$(OutDir)" Condition=" '$(Configuration)' == 'Debug' and '$(IsLinux)'=='true'"/>
+
+    <Copy SourceFiles="Native/MacOS/Release/libenet.bundle" DestinationFolder="$(OutDir)" Condition=" '$(Configuration)' == 'Release' and '$(IsOSX)'=='true'"/>
+    <Copy SourceFiles="Native/MacOS/Debug/libenet.bundle" DestinationFolder="$(OutDir)" Condition=" '$(Configuration)' == 'Debug' and '$(IsOSX)'=='true'"/>
+  </Target>
 </Project>
