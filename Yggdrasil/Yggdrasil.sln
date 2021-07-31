@@ -1,0 +1,16 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Yggdrasil", "Yggdrasil\Yggdrasil.csproj", "{EAF0E547-B135-4866-A821-BCBBF4D5DE95}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{EAF0E547-B135-4866-A821-BCBBF4D5DE95}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EAF0E547-B135-4866-A821-BCBBF4D5DE95}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EAF0E547-B135-4866-A821-BCBBF4D5DE95}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EAF0E547-B135-4866-A821-BCBBF4D5DE95}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
