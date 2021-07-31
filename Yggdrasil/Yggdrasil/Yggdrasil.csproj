@@ -2,15 +2,19 @@
 
     <PropertyGroup>
         <TargetFramework>netstandard2.0</TargetFramework>
+        <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
     </PropertyGroup>
 
     <ItemGroup>
-      <PackageReference Include="ENet-CSharp" Version="2.4.7" />
       <PackageReference Include="System.Memory" Version="4.5.4" />
     </ItemGroup>
 
     <ItemGroup>
       <Folder Include="Message" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\ENet\ENet.csproj" />
     </ItemGroup>
 
 </Project>
