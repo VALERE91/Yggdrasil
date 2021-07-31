@@ -6,7 +6,13 @@ namespace BasicServer
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            Yggdrasil.Yggdrasil.Initialize();
+            using (Yggdrasil.Hub hub = new("0.0.0.0", 5000, 100))
+            {
+                hub.Start();
+                Console.ReadLine();
+            }
+            Yggdrasil.Yggdrasil.Deinitialize();
         }
     }
 }
