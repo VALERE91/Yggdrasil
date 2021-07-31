@@ -6,7 +6,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BasicServer", "Examples\Bas
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BasicClient", "Examples\BasicClient\BasicClient.csproj", "{65D107E0-F4C6-4F48-9D3F-10C63710AC41}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ENet", "ENet\ENet.csproj", "{5E35EB05-DB20-4F68-AF54-74EF271C9659}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ENetCSharp", "ENetCSHarp\ENetCSharp.csproj", "{A545BE2A-6000-47CB-ABAB-555C25E1584E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -26,9 +26,9 @@ Global
 		{65D107E0-F4C6-4F48-9D3F-10C63710AC41}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{65D107E0-F4C6-4F48-9D3F-10C63710AC41}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{65D107E0-F4C6-4F48-9D3F-10C63710AC41}.Release|Any CPU.Build.0 = Release|Any CPU
-		{5E35EB05-DB20-4F68-AF54-74EF271C9659}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{5E35EB05-DB20-4F68-AF54-74EF271C9659}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{5E35EB05-DB20-4F68-AF54-74EF271C9659}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{5E35EB05-DB20-4F68-AF54-74EF271C9659}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A545BE2A-6000-47CB-ABAB-555C25E1584E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A545BE2A-6000-47CB-ABAB-555C25E1584E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A545BE2A-6000-47CB-ABAB-555C25E1584E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A545BE2A-6000-47CB-ABAB-555C25E1584E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

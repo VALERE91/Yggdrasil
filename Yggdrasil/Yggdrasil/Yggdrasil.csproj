@@ -14,7 +14,7 @@
     </ItemGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\ENet\ENet.csproj" />
+      <ProjectReference Include="..\ENetCSHarp\ENetCSharp.csproj" />
     </ItemGroup>
 
 </Project>
