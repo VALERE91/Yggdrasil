@@ -3,7 +3,7 @@ using Yggdrasil.Utils;
 
 namespace Yggdrasil.Message
 {
-    class DisconnectionMsg : IMessage, IPoolObject
+    public class DisconnectionMsg : IMessage, IPoolObject
     {
         public bool TryParse(Span<byte> data, out int sizeRead)
         {

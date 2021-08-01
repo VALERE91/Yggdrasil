@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using Yggdrasil.Message;
 
 namespace Yggdrasil
@@ -44,15 +44,55 @@ namespace Yggdrasil
                 switch (messageCode)
                 {
                     case MessageCode.Connection:
+                        Connect(msg as ConnectionMsg);
                         break;
                     case MessageCode.Disconnection:
+                        Disconnect(msg as DisconnectionMsg);
                         break;
                     case MessageCode.Publish:
+                        Publish(msg as PublishMsg);
                         break;
                     case MessageCode.Subscribe:
+                        Subscribe(msg as SubscribeMsg);
                         break;
                 }   
             }
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="msg"></param>
+        private void Connect(ConnectionMsg msg)
+        {
+            
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="msg"></param>
+        private void Disconnect(DisconnectionMsg msg)
+        {
+            
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="msg"></param>
+        private void Publish(PublishMsg msg)
+        {
+            
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="msg"></param>
+        private void Subscribe(SubscribeMsg msg)
+        {
+            
         }
     }
 }
