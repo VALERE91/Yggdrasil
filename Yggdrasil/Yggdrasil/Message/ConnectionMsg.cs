@@ -4,7 +4,7 @@ namespace Yggdrasil.Message
 {
     class ConnectionMsg : IMessage
     {
-        public void Parse(Span<byte> data)
+        public bool TryParse(Span<byte> data, out int sizeRead)
         {
             throw new NotImplementedException();
         }

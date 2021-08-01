@@ -9,28 +9,25 @@ namespace Yggdrasil.Message
 
         }
 
-        public static bool TryParse(Span<byte> data, out IMessage msg)
+        public static bool TryParse(Span<byte> data, out IMessage msg, out int sizeRead)
         {
             switch (data[0])
             {
                 case (byte)MessageCode.Connection:
                     msg = new ConnectionMsg();
-                    msg.Parse(data.Slice(1));
-                    return true;
+                    return msg.TryParse(data.Slice(1), out sizeRead);
                 case (byte)MessageCode.Disconnection:
                     msg = new DisconnectionMsg();
-                    msg.Parse(data.Slice(1));
-                    return true;
+                    return msg.TryParse(data.Slice(1), out sizeRead);
                 case (byte)MessageCode.Publish:
                     msg = new PublishMsg();
-                    msg.Parse(data.Slice(1));
-                    return true;
+                    return msg.TryParse(data.Slice(1), out sizeRead);
                 case (byte)MessageCode.Subscribe:
                     msg = new SubscribeMsg();
-                    msg.Parse(data.Slice(1));
-                    return true;
+                    return msg.TryParse(data.Slice(1), out sizeRead);
                 default:
                     msg = null;
+                    sizeRead = 0;
                     return false;
             }
         }

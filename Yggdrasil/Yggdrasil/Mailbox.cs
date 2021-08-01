@@ -32,7 +32,8 @@ namespace Yggdrasil
             }
 
             IMessage msg;
-            if(!MessageFactory.TryParse(packetData, out msg))
+            int sizeRead = 0;
+            if(!MessageFactory.TryParse(packetData, out msg, out sizeRead))
             {
                 //Corrupted packet let's return and ditch it
                 return;

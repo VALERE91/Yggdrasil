@@ -4,7 +4,7 @@ namespace Yggdrasil.Message
 {
     public interface IMessage
     {
-        void Parse(Span<byte> data);
+        bool TryParse(Span<byte> data, out int sizeRead);
 
         MessageCode Type();
     }

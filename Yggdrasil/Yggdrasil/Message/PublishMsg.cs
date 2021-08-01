@@ -10,9 +10,9 @@ namespace Yggdrasil.Message
 
         public int Sender { get; set; }
 
-        public void Parse(Span<byte> data)
+        public bool TryParse(Span<byte> data, out int sizeRead)
         {
-            
+            throw new NotImplementedException();
         }
 
         public MessageCode Type()
