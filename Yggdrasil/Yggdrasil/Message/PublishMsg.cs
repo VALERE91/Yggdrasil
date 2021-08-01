@@ -1,8 +1,9 @@
 ﻿using System;
+using Yggdrasil.Utils;
 
 namespace Yggdrasil.Message
 {
-    public class PublishMsg : IMessage
+    public class PublishMsg : IMessage, IPoolObject
     {
         public int ChannelId { get; set; }
 
@@ -18,6 +19,11 @@ namespace Yggdrasil.Message
         public MessageCode Type()
         {
             return MessageCode.Publish;
+        }
+
+        public void Reset()
+        {
+            
         }
     }
 }

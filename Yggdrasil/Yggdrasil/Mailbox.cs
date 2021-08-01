@@ -31,27 +31,27 @@ namespace Yggdrasil
                 packetData = new Span<byte>(packet + 3, length - 3);
             }
 
-            IMessage msg;
-            int sizeRead = 0;
-            if(!MessageFactory.TryParse(packetData, out msg, out sizeRead))
+            var sizeRead = 0;
+            for (var i = 0; i < numberOfMsg; ++i)
             {
-                //Corrupted packet let's return and ditch it
-                return;
-            }
+                if(!MessageFactory.TryParse(packetData.Slice(sizeRead), out var msg, out sizeRead))
+                {
+                    //Corrupted packet let's return and ditch it
+                    return;
+                }
 
-            MessageCode messageCode = msg.Type();
-            switch (messageCode)
-            {
-                case MessageCode.Connection:
-                    break;
-                case MessageCode.Disconnection:
-                    break;
-                case MessageCode.Publish:
-                    break;
-                case MessageCode.Subscribe:
-                    break;
-                default:
-                    break;
+                MessageCode messageCode = msg.Type();
+                switch (messageCode)
+                {
+                    case MessageCode.Connection:
+                        break;
+                    case MessageCode.Disconnection:
+                        break;
+                    case MessageCode.Publish:
+                        break;
+                    case MessageCode.Subscribe:
+                        break;
+                }   
             }
         }
     }

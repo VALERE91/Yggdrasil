@@ -1,8 +1,9 @@
 ﻿using System;
+using Yggdrasil.Utils;
 
 namespace Yggdrasil.Message
 {
-    class SubscribeMsg : IMessage
+    class SubscribeMsg : IMessage, IPoolObject
     {
         public bool TryParse(Span<byte> data, out int sizeRead)
         {
@@ -12,6 +13,11 @@ namespace Yggdrasil.Message
         public MessageCode Type()
         {
             return MessageCode.Subscribe;
+        }
+
+        public void Reset()
+        {
+            
         }
     }
 }
