@@ -19,14 +19,36 @@
     <DefineConstants>Linux</DefineConstants>
   </PropertyGroup>
 
-  <Target Name="CopyENetLibs" AfterTargets="AfterBuild">
-    <Copy SourceFiles="Native/Win64/Release/enet.dll" DestinationFolder="$(OutDir)" Condition=" '$(Configuration)' == 'Release' and '$(IsWindows)'=='true'"/>
-    <Copy SourceFiles="Native/Win64/Debug/enet.dll" DestinationFolder="$(OutDir)" Condition=" '$(Configuration)' == 'Debug' and '$(IsWindows)'=='true'"/>
+  <ItemGroup Condition="'$(IsLinux)'=='true'">
+    <ContentWithTargetPath Include="Native\Linux64\Debug\libenet.so" Condition="'$(Configuration)'=='Debug'">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <TargetPath>libenet.so</TargetPath>
+    </ContentWithTargetPath>
+    <ContentWithTargetPath Include="Native\Linux64\Release\libenet.so" Condition="'$(Configuration)'=='Release'">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <TargetPath>libenet.so</TargetPath>
+    </ContentWithTargetPath>
+  </ItemGroup>
 
-    <Copy SourceFiles="Native/Linux64/Release/libenet.so" DestinationFolder="$(OutDir)" Condition=" '$(Configuration)' == 'Release' and '$(IsLinux)'=='true'"/>
-    <Copy SourceFiles="Native/Linux64/Debug/libenet.so" DestinationFolder="$(OutDir)" Condition=" '$(Configuration)' == 'Debug' and '$(IsLinux)'=='true'"/>
+  <ItemGroup  Condition="'$(IsOSX)'=='true'">
+    <ContentWithTargetPath Include="Native\MacOS\Debug\libenet.bundle" Condition="'$(Configuration)'=='Debug'">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <TargetPath>libenet.bundle</TargetPath>
+    </ContentWithTargetPath>
+    <ContentWithTargetPath Include="Native\MacOS\Release\libenet.bundle" Condition="'$(Configuration)'=='Release'">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <TargetPath>libenet.bundle</TargetPath>
+    </ContentWithTargetPath>
+  </ItemGroup>
 
-    <Copy SourceFiles="Native/MacOS/Release/libenet.bundle" DestinationFolder="$(OutDir)" Condition=" '$(Configuration)' == 'Release' and '$(IsOSX)'=='true'"/>
-    <Copy SourceFiles="Native/MacOS/Debug/libenet.bundle" DestinationFolder="$(OutDir)" Condition=" '$(Configuration)' == 'Debug' and '$(IsOSX)'=='true'"/>
-  </Target>
+  <ItemGroup Condition="'$(IsWindows)'=='true'">
+    <ContentWithTargetPath Include="Native\Win64\Debug\enet.dll" Condition="'$(Configuration)'=='Debug'">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <TargetPath>enet.dll</TargetPath>
+    </ContentWithTargetPath>
+    <ContentWithTargetPath Include="Native\Win64\Release\enet.dll" Condition="'$(Configuration)'=='Release'">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <TargetPath>enet.dll</TargetPath>
+    </ContentWithTargetPath>
+  </ItemGroup>
 </Project>
