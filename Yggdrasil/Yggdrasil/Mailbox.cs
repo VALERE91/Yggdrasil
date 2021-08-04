@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using Yggdrasil.Message;
 
 namespace Yggdrasil
@@ -31,27 +31,68 @@ namespace Yggdrasil
                 packetData = new Span<byte>(packet + 3, length - 3);
             }
 
-            IMessage msg;
-            if(!MessageFactory.TryParse(packetData, out msg))
+            var sizeRead = 0;
+            for (var i = 0; i < numberOfMsg; ++i)
             {
-                //Corrupted packet let's return and ditch it
-                return;
-            }
+                if(!MessageFactory.TryParse(packetData.Slice(sizeRead), out var msg, out sizeRead))
+                {
+                    //Corrupted packet let's return and ditch it
+                    return;
+                }
 
-            MessageCode messageCode = msg.Type();
-            switch (messageCode)
-            {
-                case MessageCode.Connection:
-                    break;
-                case MessageCode.Disconnection:
-                    break;
-                case MessageCode.Publish:
-                    break;
-                case MessageCode.Subscribe:
-                    break;
-                default:
-                    break;
+                MessageCode messageCode = msg.Type();
+                switch (messageCode)
+                {
+                    case MessageCode.Connection:
+                        Connect(msg as ConnectionMsg);
+                        break;
+                    case MessageCode.Disconnection:
+                        Disconnect(msg as DisconnectionMsg);
+                        break;
+                    case MessageCode.Publish:
+                        Publish(msg as PublishMsg);
+                        break;
+                    case MessageCode.Subscribe:
+                        Subscribe(msg as SubscribeMsg);
+                        break;
+                }   
             }
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="msg"></param>
+        private void Connect(ConnectionMsg msg)
+        {
+            
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="msg"></param>
+        private void Disconnect(DisconnectionMsg msg)
+        {
+            
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="msg"></param>
+        private void Publish(PublishMsg msg)
+        {
+            
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="msg"></param>
+        private void Subscribe(SubscribeMsg msg)
+        {
+            
         }
     }
 }

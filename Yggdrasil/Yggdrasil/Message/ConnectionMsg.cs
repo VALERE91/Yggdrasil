@@ -1,10 +1,11 @@
 ﻿using System;
+using Yggdrasil.Utils;
 
 namespace Yggdrasil.Message
 {
-    class ConnectionMsg : IMessage
+    public class ConnectionMsg : IMessage, IPoolObject
     {
-        public void Parse(Span<byte> data)
+        public bool TryParse(Span<byte> data, out int sizeRead)
         {
             throw new NotImplementedException();
         }
@@ -12,6 +13,11 @@ namespace Yggdrasil.Message
         public MessageCode Type()
         {
             return MessageCode.Connection;
+        }
+
+        public void Reset()
+        {
+            
         }
     }
 }
